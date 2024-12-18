@@ -95,4 +95,5 @@
   host      replication              {{ patroni_replication_username }}               localhost                trust
 {% for host in groups['postgres_cluster'] %}
   host      replication              {{ patroni_replication_username }}               {{ hostvars[host]['ansible_default_ipv4']['address'] }}/32         {{ postgresql_password_encryption_algorithm }}
+  host      replication              {{ patroni_replication_username }}               {{ hostvars[host]['ansible_default_ipv6']['address'] }}/128         {{ postgresql_password_encryption_algorithm }}
 {% endfor %}
